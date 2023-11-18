@@ -5,15 +5,15 @@
 #' @import shiny
 #' @noRd
 app_ui <- function(request) {
+
   tagList(
-    # Leave this function for adding external resources
     golem_add_external_resources(),
-    # Your application UI logic
-    fluidPage(
-      h1("fec")
-    )
+    shinyUI(shiny::fluidPage(
+      theme = shinythemes::shinytheme("cerulean")
+    ))
   )
 }
+
 
 #' Add external Resources to the Application
 #'
