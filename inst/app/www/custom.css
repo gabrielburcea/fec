@@ -1,9 +1,22 @@
-/* This file is used for custom CSS that is not part of the theme. */
-<!DOCTYPE html>
-<html>
-  <head>
-    <link type="text/css" rel="stylesheet" href="bootstrap.css"/>
-  </head>
-  <body>
-  </body>
-</html>
+body {
+  background-color: darkblue;
+}
+
+#main-page {
+  text-align: center;
+}
+
+#start-button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#start-button:hover {
+  background-color: lightgray;
+}
+

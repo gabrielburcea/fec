@@ -6,4 +6,9 @@
 #' @noRd
 app_server <- function(input, output, session) {
   # Your application server logic
+
+  # Handle the action button click
+  observeEvent(input$start, {
+    # Update the output
+  })
 }

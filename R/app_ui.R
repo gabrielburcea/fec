@@ -8,10 +8,20 @@ app_ui <- function(request) {
 
   tagList(
     golem_add_external_resources(),
-    shinyUI(shiny::fluidPage(
-      theme = shinythemes::shinytheme("cerulean")
-    ))
+    # Create a tag to reference the CSS file
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "www/custom.css")
+    ),
+
+    mainPanel(
+      div(
+        id = "main-page",
+        align = "center",
+        actionButton(inputId = "start-button", label = "START")
+      )
+    )
   )
+
 }
 
 
