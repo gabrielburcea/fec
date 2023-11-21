@@ -1,0 +1,38 @@
+/* styles.css */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: navy; /* Set background color for the body */
+}
+
+.input-container {
+  width: 80%;
+  text-align: center;
+  background-color: navy; /* Set background color for the input container */
+  padding: 20px; /* Add padding for better visibility */
+}
+
+.input-container input[type='text'],
+.input-container input[type='number'],
+.input-container .btn {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+}
+
+.input-container .btn {
+  margin-top: 20px;
+}
+
+.details-text {
+  color: white; /* Set the text color to white */
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center; /* Align text to the center */
+}
