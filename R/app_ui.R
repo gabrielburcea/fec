@@ -5,16 +5,11 @@
 #' @import shiny
 #' @noRd
 app_ui <- function(request) {
+  tagList(
+    golem_add_external_resources(),
+    mod_first_page_ui("mod_first_page_1")
 
-
-  tagList(golem_add_external_resources(),
-          # Create a tag to reference the CSS file
-
-          fluidPage(tags$head(
-            tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
-          ),
-          titlePanel(" "),
-          uiOutput("page")))
+  )
 }
 
 
