@@ -14,7 +14,7 @@ mod_first_page_ui <- function(id){
       tags$link(rel = "stylesheet", type = "text/css", href = "fec/inst/app/www/styles.css")
     ),
     titlePanel(" "),
-    uiOutput("page"))
+    uiOutput(ns("page")))
   )
 }
 
@@ -23,6 +23,7 @@ mod_first_page_ui <- function(id){
 #' @noRd
 mod_first_page_server <- function(id_fec){
   moduleServer(id_fec, function(input, output, session){
+    ns <- session$ns
     output$page <- renderUI({
       if (is.null(input$currentPage)) {
         tagList(
@@ -35,14 +36,14 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(class = "input-container",
               tags$p(class = "details-text", "Your Details:"),
-              textInput("name", label = NULL, placeholder = "Name", style = "background-color: lightblue; color: navy;"),
-              textInput("nationality", label = NULL, placeholder = "Nationality", style = "background-color: lightyellow; color: navy;"),
-              textInput("age", label = NULL, value = "", placeholder = "Age", style = "background-color: lightgreen; color: navy;"),
-              textInput("email", label = NULL, placeholder = "Email", style = "background-color: lightgray; color: navy;"),
-              actionButton("nextButton", "Next", style = "font-size: 30px; color: navy;") #  style = "font-size: 24px;"
+              textInput(ns("name"), label = NULL, placeholder = "Name", style = "background-color: lightblue; color: navy;"),
+              textInput(ns("nationality"), label = NULL, placeholder = "Nationality", style = "background-color: lightyellow; color: navy;"),
+              textInput(ns("age"), label = NULL, value = "", placeholder = "Age", style = "background-color: lightgreen; color: navy;"),
+              textInput(ns("email"), label = NULL, placeholder = "Email", style = "background-color: lightgray; color: navy;"),
+              actionButton(ns("nextButton"), "Next", style = "font-size: 30px; color: navy;") #  style = "font-size: 24px;"
           ),
           div(id = "corner-triangle",
-              actionButton(label="Back", inputId = "bck1",
+              actionButton(label="Back", inputId = ns("bck1"),
                            style = "top: -150px;
                                         left: 25px;
                                         font-size: 25px;
@@ -61,14 +62,14 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(class = "input-container",
               tags$p(class = "details-text", "Teaching level:"),
-              actionButton("basicButton", "Basic"),
-              actionButton("intermediateButton", "Intermediate"),
-              actionButton("intermediatePlusButton", "Intermediate +"),
-              actionButton("notSureButton", "Not sure"),
-              actionButton("nextButtonPage3", "Next", style = "font-size: 30px; color: navy;") #  style = "font-size: 24px;"
+              actionButton(ns("basicButton"), "Basic"),
+              actionButton(ns("intermediateButton"), "Intermediate"),
+              actionButton(ns("intermediatePlusButton"), "Intermediate +"),
+              actionButton(ns("notSureButton"), "Not sure"),
+              actionButton(ns("nextButtonPage3"), "Next", style = "font-size: 30px; color: navy;") #  style = "font-size: 24px;"
           ),
           div(id = "corner-triangle",
-              actionButton(label="Back", inputId = "bck2",
+              actionButton(label="Back", inputId = ns("bck2"),
                            style = "top: -150px;
                                         left: 25px;
                                         font-size: 25px;
@@ -91,14 +92,14 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(class = "input-container",
               tags$p(class = "details-text", "Your Details:"),
-              textInput("name", label = NULL, placeholder = "Name"),
-              textInput("nationality", label = NULL, placeholder = "Nationality"),
-              textInput("age", label = NULL, value = "", placeholder = "Age"),
-              textInput("email", label = NULL, placeholder = "Email"),
-              actionButton("nextButton", "Next", style = "font-size: 30px; color: navy;")
+              textInput(ns("name"), label = NULL, placeholder = "Name"),
+              textInput(ns("nationality"), label = NULL, placeholder = "Nationality"),
+              textInput(ns("age"), label = NULL, value = "", placeholder = "Age"),
+              textInput(ns("email"), label = NULL, placeholder = "Email"),
+              actionButton(ns("nextButton"), "Next", style = "font-size: 30px; color: navy;")
           ),
           div(id = "corner-triangle",
-              actionButton(label="Back", inputId = "bck2",
+              actionButton(label="Back", inputId = ns("bck2"),
                            style = "top: -150px;
                                         left: 25px;
                                         font-size: 25px;
@@ -126,14 +127,14 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(class = "input-container",
               tags$p(class = "details-text", "Teaching level:"),
-              actionButton("basicButton", "Basic", style = "background-color: lightblue; color: navy;"),
-              actionButton("intermediateButton", "Intermediate", style = "background-color: lightyellow; color: navy;"),
-              actionButton("intermediatePlusButton", "Intermediate +", style = "background-color: lightgreen; color: navy;"),
-              actionButton("notSureButton", "Not sure", style = "background-color: lightgray; color: navy;"),
-              actionButton("nextButtonPage3", "Next", style = "font-size: 30px; color: navy;") #
+              actionButton(ns("basicButton"), "Basic", style = "background-color: lightblue; color: navy;"),
+              actionButton(ns("intermediateButton"), "Intermediate", style = "background-color: lightyellow; color: navy;"),
+              actionButton(ns("intermediatePlusButton"), "Intermediate +", style = "background-color: lightgreen; color: navy;"),
+              actionButton(ns("notSureButton"), "Not sure", style = "background-color: lightgray; color: navy;"),
+              actionButton(ns("nextButtonPage3"), "Next", style = "font-size: 30px; color: navy;") #
           ),
           div(id = "corner-triangle",
-              actionButton(label="Back", inputId = "bck2",
+              actionButton(label="Back", inputId = ns("bck2"),
                            style = "top: -150px;
                                         left: 25px;
                                         font-size: 25px;
@@ -155,7 +156,7 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(
             class = "input-container",
-            actionButton("startButton", "Start", style = "font-size: 35px; color: navy;")
+            actionButton(ns("startButton"), "Start", style = "font-size: 35px; color: navy;")
           ),
           tags$img(
             src = "www/free_english_logo.png",
@@ -171,14 +172,14 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(class = "input-container",
               tags$p(class = "details-text", "Your Details:"),
-              textInput("name", label = NULL, placeholder = "Name"),
-              textInput("nationality", label = NULL, placeholder = "Nationality"),
-              textInput("age", label = NULL, value = "", placeholder = "Age"),
-              textInput("email", label = NULL, placeholder = "Email"),
-              actionButton("nextButton", "Next", style = "font-size: 24px; color: navy;")
+              textInput(ns("name"), label = NULL, placeholder = "Name"),
+              textInput(ns("nationality"), label = NULL, placeholder = "Nationality"),
+              textInput(ns("age"), label = NULL, value = "", placeholder = "Age"),
+              textInput(ns("email"), label = NULL, placeholder = "Email"),
+              actionButton(ns("nextButton"), "Next", style = "font-size: 24px; color: navy;")
           ),
           div(id = "corner-triangle",
-              actionButton(label="Back", inputId = "bck1",
+              actionButton(label="Back", inputId = ns("bck1"),
                            style = "top: -150px;
                                         left: 25px;
                                         font-size: 25px;
