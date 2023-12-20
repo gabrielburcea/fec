@@ -1,71 +1,101 @@
 /* styles.css */
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100vh;
-  margin: 5px 0;
-  background-color: navy; /* Set background color for the body */
-  position: relative; /* Add position relative for the logo */
-}
-.input-container {
-  width: 100%;
-  text-align: center;
-  background-color: navy; /* Set background color for the input container */
-  padding: 20px; /* Add padding for better visibility */
+/* styles.css */
+ body {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   height: 100vh;
+   margin: 5px 0;
+   background-color: navy; /* Set background color for the body */
+   position: relative; /* Add position relative for the logo */
 
-}
-.input-container input[type='text'],
-.input-container input[type='number'],
-.input-container .btn {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0;
-  box-sizing: border-box;
-  font-size: 18px;
-  text-align: center;
-  color: navy; /* Text color navy */
+ }
+ .input-container {
+   width: 100%;
+   text-align: center;
+   background-color: navy; /* Set background color for the input container */
+   padding: 20px; /* Add padding for better visibility */
+   width: 600px; /* Adjust the width of the input container */
 
-}
-.input-container .btn {
-  margin-top: 20px;
-  color: white;
+ }
+ .input-container input[type='text'],
+ .input-container input[type='number'],
+ .input-container .btn {
+   width: 100%;
+   padding: 15px;
+   margin: 15px 0; /*increased from 5 to 15 for more space between inputs */
+   box-sizing: border-box;
+   font-size: 18px;
+   text-align: center;
+   color: navy; /* Text color navy */
+   margin-bottom: 50px; /* larger space to next element */
 
-}
-/* Style for Your Details text */
-.details-container {
-  text-align: center;
+ }
+ .input-container .btn {
+   margin-top: 20px;
+   color: white;
 
-}
-.details-text {
-  color: white;
-  font-size: 24px;
-  margin-bottom: 15px;
-  text-align: center;
-  display: inline-block;
+ }
+ /* Style for Your Details text */
+ .details-container {
+   text-align: center;
+   width: 600px; /*larger inputs as desired */
+   width: 100%;
 
-}
-.logo {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px; /* Adjust the width of the logo */
-  height: auto; /* Maintain aspect ratio */
+ }
+ .details-text {
+   color: white;
+   font-size: 24px;
+   margin-bottom: 15px;
+   text-align: center;
+   display: inline-block;
 
-}
-div#corner-triangle {
-  display: block;
-  width: 100px;
-  height: 100px;
-  border-style: solid;
-  border-width: 200px 200px 0 0;
-  border-color: #ffffff transparent transparent transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999;
-  color: white;
-  text-shadow: 0 0 25px 9px #fff;
+ }
+.form-group {
+   margin-bottom: 50px; /* larger space to next element */
+
+ }
+ .shiny-input-container:not(.shiny-input-container-inline) {
+   width: 600px; /*larger inputs as desired */
+   max-width: 100%;
+
+ }
+ #nextButton, #nextButtonPage3 {
+   width: 100px;   /* shorter than the other buttons */
+   background-color: green; /* like in the screenshot */
+   margin-top: 60px; /* larger space to above */
+
+ }
+ #notSureButton {
+   width: 295px;   /* shorter than the other buttons */
+   margin-top: 60px;   /* larger space to above */
+
+ }
+ #startButton {
+   width: 100px; /* width of the start button, separately defined */
+
+ }
+ div#corner-triangle {
+   display: block;
+   width: 100px;
+   height: 100px;
+   border-style: solid;
+   border-width: 200px 200px 0 0;
+   border-color: #ffffff transparent transparent transparent;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 99999;
+   color: white;
+   text-shadow: 0 0 25px 9px #fff;
+
+ }
+ .logo {
+   position: absolute;
+   bottom: 1px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 300px; /* Adjust the width of the logo */
+   height: auto; /* Maintain aspect ratio */
 }

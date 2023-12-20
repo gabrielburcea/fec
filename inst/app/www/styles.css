@@ -51,7 +51,7 @@
    display: inline-block;
 
  }
- ,form-group {
+.form-group {
    margin-bottom: 50px; /* larger space to next element */
 
  }
@@ -61,7 +61,7 @@
 
  }
  #nextButton, #nextButtonPage3 {
-   width: 300px;   /* shorter than the other buttons */
+   width: 100px;   /* shorter than the other buttons */
    background-color: green; /* like in the screenshot */
    margin-top: 60px; /* larger space to above */
 
@@ -72,7 +72,7 @@
 
  }
  #startButton {
-   width: 300px; /* width of the start button, separately defined */
+   width: 100px; /* width of the start button, separately defined */
 
  }
  div#corner-triangle {
