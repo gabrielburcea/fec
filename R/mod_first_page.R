@@ -28,7 +28,11 @@ mod_first_page_server <- function(id_fec){
       if (is.null(input$currentPage)) {
         tagList(
           div(class = "input-container",
-              actionButton(ns("startButton"), "Start", style = "font-size: 35px; color: navy;") #  style = "font-size: 24px;"
+              actionButton(ns("startButton"), "Start",
+                           style = "font-size: 35px;
+                           color: navy;
+                           width: 250px;
+                           margin-top: 60px;") #  style = "font-size: 24px;"
           ),
           tags$img(src = "www/free_english_logo.png", class = "logo", width = "400px") # Adjust the width of the logo
         )
@@ -40,7 +44,12 @@ mod_first_page_server <- function(id_fec){
               textInput(ns("nationality"), label = NULL, placeholder = "Nationality", style = "background-color: lightyellow; color: navy;"),
               textInput(ns("age"), label = NULL, value = "", placeholder = "Age", style = "background-color: lightgreen; color: navy;"),
               textInput(ns("email"), label = NULL, placeholder = "Email", style = "background-color: lightgray; color: navy;"),
-              actionButton(ns("nextButton"), "Next", style = "font-size: 30px; color: navy;") #  style = "font-size: 24px;"
+              actionButton(ns("nextButton"), "Next",
+                           style = "font-size: 30px;
+                           color: navy;
+                           background-color: green;
+                           width: 250px;
+                           margin-top: 60px;") #  style = "font-size: 24px;"
           ),
           div(id = "corner-triangle",
               actionButton(label="Back", inputId = ns("bck1"),
@@ -66,7 +75,11 @@ mod_first_page_server <- function(id_fec){
               actionButton(ns("intermediateButton"), "Intermediate"),
               actionButton(ns("intermediatePlusButton"), "Intermediate +"),
               actionButton(ns("notSureButton"), "Not sure"),
-              actionButton(ns("nextButtonPage3"), "Next", style = "font-size: 30px; color: navy;") #  style = "font-size: 24px;"
+              actionButton(ns("nextButtonPage3"), "Next",
+                           style = "font-size: 30px; color: navy;
+                           background-color: green;
+                           width: 250px;
+                           margin-top: 60px;") #  style = "font-size: 24px;"
           ),
           div(id = "corner-triangle",
               actionButton(label="Back", inputId = ns("bck2"),
@@ -96,7 +109,12 @@ mod_first_page_server <- function(id_fec){
               textInput(ns("nationality"), label = NULL, placeholder = "Nationality"),
               textInput(ns("age"), label = NULL, value = "", placeholder = "Age"),
               textInput(ns("email"), label = NULL, placeholder = "Email"),
-              actionButton(ns("nextButton"), "Next", style = "font-size: 30px; color: navy;")
+              actionButton(ns("nextButton"), "Next",
+                           style = "font-size: 30px;
+                           color: navy;
+                           background-color: green;
+                           width: 250px;
+                           margin-top: 60px;")
           ),
           div(id = "corner-triangle",
               actionButton(label="Back", inputId = ns("bck2"),
@@ -127,11 +145,30 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(class = "input-container",
               tags$p(class = "details-text", "Teaching level:"),
-              actionButton(ns("basicButton"), "Basic", style = "background-color: lightblue; color: navy;"),
-              actionButton(ns("intermediateButton"), "Intermediate", style = "background-color: lightyellow; color: navy;"),
-              actionButton(ns("intermediatePlusButton"), "Intermediate +", style = "background-color: lightgreen; color: navy;"),
-              actionButton(ns("notSureButton"), "Not sure", style = "background-color: lightgray; color: navy;"),
-              actionButton(ns("nextButtonPage3"), "Next", style = "font-size: 30px; color: navy;") #
+              actionButton(ns("basicButton"), "Basic",
+                           style = "background-color: lightblue;
+                           color: navy;
+                           margin-top: 0.5px;"),
+              actionButton(ns("intermediateButton"), "Intermediate",
+                           style = "background-color: lightyellow;
+                           color: navy;
+                           margin-top: 0.5px;"),
+              actionButton(ns("intermediatePlusButton"), "Intermediate +",
+                           style = "background-color: lightgreen;
+                           color: navy;
+                           margin-top: 0.5px;"),
+              actionButton(ns("notSureButton"), "Not sure",
+                           style = "
+                           background-color: lightgray; color: navy;
+                           # width: 300px;
+                           margin-top: 30px;"
+                           ),
+              actionButton(ns("nextButtonPage3"), "Next",
+                           style = "font-size: 30px;
+                           color: navy;
+                           background-color: green;
+                           width: 250px;
+                           margin-top: 10px;") #
           ),
           div(id = "corner-triangle",
               actionButton(label="Back", inputId = ns("bck2"),
@@ -156,7 +193,11 @@ mod_first_page_server <- function(id_fec){
         tagList(
           div(
             class = "input-container",
-            actionButton(ns("startButton"), "Start", style = "font-size: 35px; color: navy;")
+            actionButton(ns("startButton"), "Start",
+                         style = "font-size: 35px;
+                         color: navy;
+                         width: 250px;
+                         margin-top: 60px;")
           ),
           tags$img(
             src = "www/free_english_logo.png",
@@ -176,7 +217,12 @@ mod_first_page_server <- function(id_fec){
               textInput(ns("nationality"), label = NULL, placeholder = "Nationality"),
               textInput(ns("age"), label = NULL, value = "", placeholder = "Age"),
               textInput(ns("email"), label = NULL, placeholder = "Email"),
-              actionButton(ns("nextButton"), "Next", style = "font-size: 24px; color: navy;")
+              actionButton(ns("nextButton"), "Next",
+                           style = "font-size: 24px;
+                           color: navy;
+                           background-color: green;
+                           width: 250px;
+                           margin-top: 60px;")
           ),
           div(id = "corner-triangle",
               actionButton(label="Back", inputId = ns("bck1"),
