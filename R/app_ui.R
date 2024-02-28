@@ -6,6 +6,7 @@
 #' @noRd
 app_ui <- function(request) {
   tagList(
+    shinyjs::useShinyjs(),
     golem_add_external_resources(),
     mod_first_page_ui("mod_first_page")
 

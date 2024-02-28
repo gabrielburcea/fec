@@ -6,9 +6,12 @@ Authors@R:
 Description: Free English Classes registration website
 License: MIT + file LICENSE
 Imports: 
+    bslib,
     config (>= 0.3.2),
     golem (>= 0.4.1),
-    shiny (>= 1.7.5.1)
+    htmltools,
+    shiny (>= 1.7.5.1),
+    shinyjs
 Suggests: 
     knitr,
     rmarkdown,

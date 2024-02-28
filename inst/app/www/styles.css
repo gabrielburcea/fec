@@ -98,3 +98,38 @@
    width: 300px; /* Adjust the width of the logo */
    height: auto; /* Maintain aspect ratio */
 }
+
+
+.circle {
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 10px;
+  background-color: lightblue; /* Use the same blue color */
+  overflow: hidden;
+  transition: .25s;
+}
+
+ .details-teachers {
+   color: white;
+   font-size: 12px;
+  /* margin-bottom: 15px; */
+   text-align: center;
+   display: inline-block;
+}
+
+.circle:hover {
+  transform: scale(1.1);
+  opacity:0.5;
+}
+
+.card_custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 25px;
+  padding: 40px 0;
+}
