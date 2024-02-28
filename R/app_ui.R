@@ -7,6 +7,7 @@
 app_ui <- function(request) {
   tagList(
     shinyjs::useShinyjs(),
+    shinyjs::extendShinyjs(script = "www/custom_print.js", functions = "custom_print"),
     golem_add_external_resources(),
     mod_first_page_ui("mod_first_page")
 

@@ -167,6 +167,10 @@ mod_first_page_server <- function(id_fec){
       output_label()
     })
 
+    observeEvent(input$confirm, {
+      shinyjs::js$custom_print(name =  tags$b(input$name))
+    })
+
   })
 }
 
