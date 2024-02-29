@@ -6,7 +6,7 @@
 \alias{fec-package}
 \title{fec: Free English Classes registration website}
 \description{
-Free English Classes registration website
+Free English Classes registration website.
 }
 \seealso{
 Useful links:

@@ -269,6 +269,11 @@ mod_first_page_server <- function(id, db_path){
 ## To be copied in the server
 # mod_mod_first_page_server("mod_first_page_1")
 
+#' Add back button
+#'
+#' Internal function to create a back button in a consistent style.
+#'
+#' @noRd
 add_back_button <- function(id){
   div(id = "corner-triangle",
       actionButton(label="Back", inputId = id,
@@ -286,6 +291,12 @@ add_back_button <- function(id){
                    outline: none;"))
 }
 
+#' Get all teachers
+#'
+#' Internal function to create pictures of teachers within a grid layout.#'
+#'
+#' @noRd
+#'
 get_all_teachers <- function(
     id,
     selected_level = "Basic",
