@@ -112,7 +112,7 @@
   transition: .25s;
 }
 
- .details-teachers {
+ .details-text-small {
    color: white;
    font-size: 12px;
   /* margin-bottom: 15px; */
@@ -132,4 +132,10 @@
   background-color: white;
   border-radius: 25px;
   padding: 40px 0;
+}
+
+.repeat_icon {
+  cursor: pointer;
+  font-size: 64px;
+  color: white;
 }

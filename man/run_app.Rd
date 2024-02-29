@@ -9,6 +9,7 @@ run_app(
   options = list(),
   enableBookmarking = NULL,
   uiPattern = "/",
+  db_path = app_sys("teaching_data.sqlite"),
   ...
 )
 }

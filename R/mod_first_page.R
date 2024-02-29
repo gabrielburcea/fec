@@ -7,6 +7,8 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
+#' @importFrom htmltools htmlEscape
+#'
 mod_first_page_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -69,12 +71,6 @@ mod_first_page_ui <- function(id){
                            # width: 300px;
                            margin-top: 30px;"
                 ),
-                actionButton(ns("next4"), "Next",
-                             style = "font-size: 30px;
-                           color: navy;
-                           background-color: green;
-                           width: 250px;
-                           margin-top: 10px;"),
                 add_logo()
             ),
             add_back_button(ns("bck2"))
@@ -84,13 +80,7 @@ mod_first_page_ui <- function(id){
           tagList(
             div(
               class = "input-container",
-              get_all_teachers(id),
-              textOutput(ns("text")),
-              actionButton(ns("next5"), "Next",
-                           style = "font-size: 30px;
-                     color: navy;
-                     background-color: green;
-                     width: 250px; margin-top: 10px;"),
+              uiOutput(ns("teachers")),
               add_logo(),
             ),
             add_back_button(ns("bck3"))
@@ -104,7 +94,15 @@ mod_first_page_ui <- function(id){
                      color: navy;
                      background-color: green;
                      width: 250px; margin-top: 10px;"),
+              htmlOutput(ns("confirm_error")) |> tagAppendAttributes(class = "details-text"),
               add_back_button(ns("bck4")),
+              add_logo()
+          )
+        }),
+        tabPanel("page6", {
+          div(class = "input-container",
+              div("Please take your sticker and join the queue.", class = "details-text"),
+              div(id = ns("start_over"), icon("rotate-right"), class = "repeat_icon"),
               add_logo()
           )
         })
@@ -117,12 +115,16 @@ mod_first_page_ui <- function(id){
 #' mod_first_page_server Server Functions
 #'
 #' @noRd
-mod_first_page_server <- function(id_fec){
-  moduleServer(id_fec, function(input, output, session){
+mod_first_page_server <- function(id, db_path){
+  moduleServer(id, function(input, output, session){
     ns <- session$ns
 
     image_folder <- app_sys("app/www/teachers")
-    teachers <- gsub(".png", "", list.files(image_folder, pattern = ".png"))
+    stopifnot("Database not found" = file.exists(db_path))
+
+    con <- get_db_connection(db_path)
+    teachers <- DBI::dbGetQuery(con, "SELECT teacher FROM teacher_info;") |>
+      unlist(use.names = FALSE)
 
     go_to_page <- function(page, id = "maintabs"){
       updateTabsetPanel(session = session, inputId = id, selected = page)
@@ -130,8 +132,6 @@ mod_first_page_server <- function(id_fec){
 
     observeEvent(input$next2, { go_to_page("page2") })
     observeEvent(input$next3, { go_to_page("page3") })
-    observeEvent(input$next4, { go_to_page("page4") })
-    observeEvent(input$next5, { go_to_page("page5") })
 
     observeEvent(input$bck1, { go_to_page("page1") })
     observeEvent(input$bck2, { go_to_page("page2") })
@@ -139,10 +139,19 @@ mod_first_page_server <- function(id_fec){
     observeEvent(input$bck4, { go_to_page("page4") })
 
     english_level <- reactiveVal("Not sure")
-    observeEvent(input$basicButton, english_level("Basic") )
-    observeEvent(input$intermediateButton, english_level("Intermediate"))
-    observeEvent(input$intermediatePlusButton, english_level("Intermediate+"))
-    observeEvent(input$notSureButton, english_level("Not sure"))
+    observeEvent(input$basicButton, { english_level("Basic"); go_to_page("page4") })
+    observeEvent(input$intermediateButton, { english_level("Intermediate"); go_to_page("page4")})
+    observeEvent(input$intermediatePlusButton, { english_level("Intermediate+"); go_to_page("page4") })
+    observeEvent(input$notSureButton, { english_level("Not sure"); go_to_page("page4") })
+
+    output$teachers <- renderUI({
+        get_all_teachers(
+          id,
+          selected_level = english_level(),
+          db_path = db_path,
+          app_sys("app/www/teachers")
+        )
+    })
 
     selected_teacher <- reactiveVal()
     lapply(teachers, \(x){
@@ -154,21 +163,101 @@ mod_first_page_server <- function(id_fec){
     })
 
     output_label <- reactive({
-      bslib::card(
+      tagList(
         HTML("<br>"),
         tags$h1(input$name),
         tags$h3(paste0("Level: ", english_level())),
         tags$h3(paste0("Teacher: ", selected_teacher())),
-        class = "card_custom"
       )
     })
 
     output$selection <- renderUI({
-      output_label()
+      bslib::card(
+        output_label(),
+        class = "card_custom"
+      )
     })
 
+    duplicate_students <- reactiveVal(NULL)
+    current_availability <- reactiveVal(NULL)
+    new_student <- reactiveVal(NULL)
+
+    observeEvent(input$maintabs, {
+      req(input$maintabs == "page5")
+      new_student(NULL); duplicate_students(NULL); current_availability(NULL)
+      req(english_level(), selected_teacher(), input$name)
+
+      con <- get_db_connection(db_path)
+      # save student information in database:
+      student <- data.frame(
+        "student" = input$name,
+        "nationality" = input$nationality %||% "",
+        "age" = input$age %||% "",
+        "email" = input$email %||% "",
+        "level" = english_level(),
+        "teacher" = selected_teacher()
+      )
+      new_student(student)
+      # verify if student is already in database:
+      duplicates <- DBI::dbGetQuery(con, "SELECT * FROM student_info;") |>
+        dplyr::mutate(age = as.character(age)) |>
+        dplyr::inner_join(student, by = names(student))
+      duplicate_students(duplicates)
+
+      # select availability from selected teacher:
+      sql <- "SELECT availability FROM teacher_info WHERE teacher = ?sel_teacher;"
+      query <- DBI::sqlInterpolate(con, sql, sel_teacher = selected_teacher())
+      availability <- DBI::dbGetQuery(con, query)$availability
+      current_availability(as.numeric(availability))
+    })
+
+
     observeEvent(input$confirm, {
-      shinyjs::js$custom_print(name =  tags$b(input$name))
+      req(new_student())
+      req(nrow(duplicate_students()) == 0)
+      req(current_availability() > 0)
+      req(file.exists(db_path))
+      con <- get_db_connection(db_path)
+
+      sql <- "UPDATE teacher_info SET availability = ?new WHERE teacher = ?sel_teacher;"
+      query <- DBI::sqlInterpolate(con, sql, new =  max(c(current_availability() - 1, 0)),
+                                     sel_teacher = selected_teacher())
+
+      # only update data if we get past the requirements above:
+      DBI::dbExecute(con, query)
+      DBI::dbWriteTable(con, "student_info", new_student(), append = TRUE)
+
+      # print label:
+      shinyjs::js$custom_print(
+        # cannot use output_label() here yet because of the HTML format
+        name = htmltools::HTML(
+          "<center><h4><b>", htmlEscape(input$name),
+          "</b></h4>Level: ", htmlEscape(english_level()),
+          "<br>Teacher: ", htmlEscape(selected_teacher()), "</center>"
+          )
+        )
+      duplicate_students <- reactiveVal(NULL)
+      current_availability <- reactiveVal(NULL)
+      go_to_page("page6")
+    })
+
+    shinyjs::onclick("start_over", {
+      updateTextInput(inputId = "name", value = NULL)
+      updateTextInput(inputId = "nationality", value = NULL)
+      updateTextInput(inputId = "age", value = NULL)
+      updateTextInput(inputId = "email", value = NULL)
+      selected_teacher(NULL)
+      english_level(NULL)
+      go_to_page("page1")
+      })
+
+    output$confirm_error <- renderText({
+      validate(
+        need(nrow(duplicate_students()) == 0, "Cannot confirm. Student already available in database.")
+        )
+      validate(
+        need(current_availability() > 0, "Cannot confirm. Teacher is not available anymore")
+      )
     })
 
   })
@@ -197,22 +286,46 @@ add_back_button <- function(id){
                    outline: none;"))
 }
 
-get_all_teachers <- function(id){
+get_all_teachers <- function(
+    id,
+    selected_level = "Basic",
+    db_path = file.path(app_sys(), "fec_data.sqlite"),
+    image_path = app_sys("app/www/teachers")
+){
   ns <- NS(id)
-  image_folder <- app_sys("app/www/teachers")
-  teachers <- gsub(".png", "", list.files(image_folder, pattern = ".png"))
-  image_paths <- paste0("www/teachers/", list.files(image_folder, pattern = ".png"))
-  names(image_paths) <- teachers
+  req(selected_level %in% teaching_levels)
 
-  all_items <- lapply(teachers, \(x){
+  image_paths <- paste0("www/teachers/", list.files(image_path, pattern = ".png"))
+  names(image_paths) <- gsub(".png", "", list.files(image_path, pattern = ".png"))
+  validate(
+    need(file.exists(db_path), "Database missing or path to database incorrect."),
+    need("placeholder" %in% names(image_paths), "image folder needs at least a placeholder image.")
+  )
+  con <- get_db_connection(db_path)
+  teacher_info <- DBI::dbGetQuery(con, "SELECT * FROM teacher_info;") |>
+    dplyr::mutate(
+      level_numeric = as.numeric(factor(level, levels = teaching_levels))
+    )
+  selected_teachers <- with(teacher_info, teacher[
+    availability != 0 &
+      level_numeric >=  ( match(selected_level, teaching_levels) %|NA|% 1 )
+  ])
+  if(length(selected_teachers) == 0) return({
+    div("No more teachers available for the selected English level", class = "details-text")
+    })
+
+  all_items <- lapply(selected_teachers, \(x){
+    image_name_x <- if(x %in% names(image_paths)) image_paths[[x]] else {
+      image_paths[["placeholder"]]
+    }
     bslib::layout_columns(
       col_widths = 12,
       id = ns(paste0("circle_", simplify_string(x))),
       bslib::card_body(
         fillable = FALSE,
-        img(src = image_paths[[x]], width = 80, height = 80) |>
+        img(src = image_name_x, width = 80, height = 80) |>
           htmltools::tagAppendAttributes(class = "circle"),
-        div(x, class = "details-teachers")
+        div(x, class = "details-text-small")
       )
     )
   })

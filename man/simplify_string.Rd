@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils_helpers.R
 \name{simplify_string}
 \alias{simplify_string}
-\title{helpers}
+\title{Simplify String}
 \usage{
 simplify_string(x)
 }
@@ -11,12 +11,12 @@ simplify_string(x)
 to character strings.}
 }
 \value{
-The return value, if any, from executing the utility.
-
 character vector of the same length as the input vector.
 }
 \description{
-A utils function
+Converts readable names to clean ids that are easier to handle in R.
+Replaces all punctuation and spaces for an underscore, and transforms all
+uppercase letters to lowercase.
 }
 \examples{
 simplify_string(c(" Dirty_name. to Clean.#$", "#$another   complicated. Name"))
