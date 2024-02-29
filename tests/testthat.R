@@ -7,6 +7,9 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(fec)
+
+# this way the package is not detectred by renv:
+package_name <- "fec"
+library(package_name, character.only = TRUE)
 
 test_check("fec")

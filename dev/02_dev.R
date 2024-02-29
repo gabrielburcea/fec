@@ -16,7 +16,7 @@
 ## Dependencies ----
 ## Amend DESCRIPTION with dependencies read from package code parsing
 ## install.packages('attachment') # if needed.
-attachment::att_amend_desc()
+#attachment::att_amend_desc()
 
 ## Add modules ----
 ## Create a module infrastructure in R/
@@ -55,7 +55,7 @@ devtools::build_vignettes()
 usethis::use_coverage()
 
 # Create a summary readme for the testthat subdirectory
-covrpage::covrpage()
+#covrpage::covrpage()
 
 ## CI ----
 ## Use this part of the script if you need to set up a CI

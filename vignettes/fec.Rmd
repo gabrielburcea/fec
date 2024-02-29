@@ -15,5 +15,6 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(fec)
+package_name <- "fec"
+library(package_name, character.only = TRUE)
 ```
