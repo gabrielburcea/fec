@@ -147,7 +147,7 @@ mod_first_page_server <- function(id, db_path){
     output$teachers <- renderUI({
         get_all_teachers(
           id,
-          selected_level = english_level(),
+          selected_level = if(english_level() == "Not sure") teaching_levels[1] else english_level(),
           db_path = db_path,
           app_sys("app/www/teachers")
         )
@@ -242,10 +242,10 @@ mod_first_page_server <- function(id, db_path){
     })
 
     shinyjs::onclick("start_over", {
-      updateTextInput(inputId = "name", value = NULL)
-      updateTextInput(inputId = "nationality", value = NULL)
-      updateTextInput(inputId = "age", value = NULL)
-      updateTextInput(inputId = "email", value = NULL)
+      updateTextInput(inputId = "name", value = character(0))
+      updateTextInput(inputId = "nationality", value = character(0))
+      updateTextInput(inputId = "age", value = character(0))
+      updateTextInput(inputId = "email", value = character(0))
       selected_teacher(NULL)
       english_level(NULL)
       go_to_page("page1")
