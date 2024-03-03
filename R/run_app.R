@@ -1,5 +1,6 @@
 #' Run the Shiny Application
 #'
+#' @param db_path Character string. Path to the database.
 #' @param ... arguments to pass to golem_opts.
 #' See `?golem::get_golem_options` for more details.
 #' @inheritParams shiny::shinyApp
@@ -12,6 +13,7 @@ run_app <- function(
   options = list(),
   enableBookmarking = NULL,
   uiPattern = "/",
+  db_path = app_sys("fec_data.sqlite"),
   ...
 ) {
   with_golem_options(
@@ -23,6 +25,9 @@ run_app <- function(
       enableBookmarking = enableBookmarking,
       uiPattern = uiPattern
     ),
-    golem_opts = list(...)
+    golem_opts = list(
+      db_path = db_path,
+      ...
+      )
   )
 }

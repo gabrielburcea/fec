@@ -34,7 +34,8 @@ You can install the development version of fec like so:
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(fec)
+package_name <- "fec"
+library(package_name, character.only = TRUE)
 ## basic example code
 ```
 

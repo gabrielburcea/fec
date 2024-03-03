@@ -3,14 +3,22 @@ Title: Free English Classes registration website
 Version: 0.0.0.9000
 Authors@R: 
     person("Gabriel", "Burcea", , "gb.burcea@gmail.com", role = c("cre", "aut"))
-Description: Free English Classes registration website
+Description: Free English Classes registration website.
 License: MIT + file LICENSE
 Imports: 
+    bslib,
     config (>= 0.3.2),
+    DBI,
+    dplyr,
     golem (>= 0.4.1),
-    shiny (>= 1.7.5.1)
+    htmltools,
+    RSQLite,
+    shiny,
+    shinyjs,
+    withr
 Suggests: 
     knitr,
+    readxl,
     rmarkdown,
     spelling,
     testthat (>= 3.0.0)
@@ -18,7 +26,9 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 URL: https://github.com/gabrielburcea/fec
 BugReports: https://github.com/gabrielburcea/fec/issues
+Depends: 
+    R (>= 2.10)
