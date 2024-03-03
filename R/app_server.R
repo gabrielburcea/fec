@@ -8,5 +8,5 @@ app_server <- function(input, output, session) {
 
   # Load the modules
   # callModule(mod_first_page_server_1, "id_fec")
-  mod_first_page_server("mod_first_page_1")
+  mod_first_page_server("mod_first_page")
 }

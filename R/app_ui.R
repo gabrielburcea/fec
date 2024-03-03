@@ -7,7 +7,7 @@
 app_ui <- function(request) {
   tagList(
     golem_add_external_resources(),
-    mod_first_page_ui("mod_first_page_1")
+    mod_first_page_ui("mod_first_page")
 
   )
 }

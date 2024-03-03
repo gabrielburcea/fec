@@ -51,17 +51,9 @@
    display: inline-block;
 
  }
- .logo {
-   position: absolute;
-   bottom: 1px;
-   left: 50%;
-   transform: translateX(-50%);
-   width: 300px; /* Adjust the width of the logo */
-   height: auto; /* Maintain aspect ratio */
-
- }
- ,form-group {
+.form-group {
    margin-bottom: 50px; /* larger space to next element */
+
  }
  .shiny-input-container:not(.shiny-input-container-inline) {
    width: 600px; /*larger inputs as desired */
@@ -69,7 +61,7 @@
 
  }
  #nextButton, #nextButtonPage3 {
-   width: 300px;   /* shorter than the other buttons */
+   width: 100px;   /* shorter than the other buttons */
    background-color: green; /* like in the screenshot */
    margin-top: 60px; /* larger space to above */
 
@@ -80,7 +72,7 @@
 
  }
  #startButton {
-   width: 300px; /* width of the start button, separately defined */
+   width: 100px; /* width of the start button, separately defined */
 
  }
  div#corner-triangle {
@@ -98,3 +90,11 @@
    text-shadow: 0 0 25px 9px #fff;
 
  }
+ .logo {
+   position: absolute;
+   bottom: 1px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 300px; /* Adjust the width of the logo */
+   height: auto; /* Maintain aspect ratio */
+}
