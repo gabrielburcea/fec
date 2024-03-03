@@ -165,7 +165,7 @@ mod_first_page_server <- function(id, db_path){
     output_label <- reactive({
       tagList(
         HTML("<br>"),
-        tags$h1(input$name),
+        htmltools::div(htmlEscape(input$name), class = "large-font"),
         tags$h3(paste0("Level: ", english_level())),
         tags$h3(paste0("Teacher: ", selected_teacher())),
       )
@@ -231,7 +231,7 @@ mod_first_page_server <- function(id, db_path){
       shinyjs::js$custom_print(
         # cannot use output_label() here yet because of the HTML format
         name = htmltools::HTML(
-          "<center><h4><b>", htmlEscape(input$name),
+          "<center><h1><b>", htmlEscape(input$name),
           "</b></h4>Level: ", htmlEscape(english_level()),
           "<br>Teacher: ", htmlEscape(selected_teacher()), "</center>"
           )
@@ -330,9 +330,12 @@ get_all_teachers <- function(
       image_paths[["placeholder"]]
     }
     bslib::layout_columns(
+      class = "center-container",
       col_widths = 12,
       id = ns(paste0("circle_", simplify_string(x))),
       bslib::card_body(
+        class = "center-container",
+        fill = FALSE,
         fillable = FALSE,
         img(src = image_name_x, width = 80, height = 80) |>
           htmltools::tagAppendAttributes(class = "circle"),
