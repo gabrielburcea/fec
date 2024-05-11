@@ -12,6 +12,7 @@ Imports:
     dplyr,
     golem (>= 0.4.1),
     htmltools,
+    pkgload,
     RSQLite,
     shiny,
     shinyjs,
