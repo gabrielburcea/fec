@@ -1,0 +1,12 @@
+name: freeenglishclasses
+title: freeenglishclasses
+username: freeenglishclasses
+account: freeenglishclasses
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12010181
+bundleId: 8620357
+url: https://freeenglishclasses.shinyapps.io/freeenglishclasses/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

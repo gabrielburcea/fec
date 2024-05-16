@@ -1,0 +1,12 @@
+name: test
+title: test
+username: gabrielb
+account: gabrielb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12007399
+bundleId:
+url: https://gabrielb.shinyapps.io/test/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,12 @@
+name: english_classes
+title: english_classes
+username: gabrielb
+account: gabrielb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12007143
+bundleId: 8620348
+url: https://gabrielb.shinyapps.io/english_classes/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
