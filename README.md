@@ -29,7 +29,7 @@ I have deployed the app on shinyapps.io since it is free. Here it is the link to
 
 I am now in need of help to link the app to the database. It should be a free database if possible What this means: when students are registering themselves data needs to be saved into a database for analysis purposes. 
 
-Check for more details the way the app is looking like since will give you an idea of how data is coming through: https://github.com/gabrielburcea/fec/blob/master/data/FEC%20Entry%20Web%20App.pdf
+Check for more details the way the app is looking like since will give you an idea of how data is coming through: https://github.com/gabrielburcea/fec/blob/master/vignettes/FEC%20Entry%20Web%20App.pdf
 
 ## Database 
 As of now I am trying MongoDb
