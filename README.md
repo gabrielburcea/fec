@@ -6,37 +6,44 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of fec is to …
+# Goal of the project 
 
-## Installation
+The goal of fec is to provide Free English classes an app for registering the students. 
 
-You can install the development version of fec like so:
+# Framework and software
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
+The framework I have worked with is golem. It is modularising the code. For more information see this link: https://engineering-shiny.org/golem.html
 
-## Example
+Moreover, I have added the whole code in one module only - https://github.com/gabrielburcea/fec/blob/master/R/mod_first_page.R. Later, after I launch the app, I may divide the code into modules, as of now, not a priority.
 
-This is a basic example which shows you how to solve a common problem:
+Software I work is R/RStudio IDE. 
 
-``` r
-library(fec)
-## basic example code
-```
+# Running the app in dev mode 
+The way to run the app, with golem framework is from dev folder - run_dev file. It is found here - https://github.com/gabrielburcea/fec/blob/master/dev/run_dev.R, which is within the fec package app. 
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+# Deployment
 
-``` r
+I have deployed the app on shinyapps.io since it is free. Here it is the link to the app deployed https://freeenglishclasses.shinyapps.io/freeenglishclasses/
+
+# Database linkage
+
+I am now in need of help to link the app to the database. It should be a free database if possible What this means: when students are registering themselves data needs to be saved into a database for analysis purposes. 
+
+Check for more details the way the app is looking like since will give you an idea of how data is coming through: https://github.com/gabrielburcea/fec/blob/master/data/FEC%20Entry%20Web%20App.pdf
+
+## Database 
+As of now I am trying MongoDb
+
+Here it is the link: https://cloud.mongodb.com/v2/66478018bb548c19f7dd587f#/overview
+
+I may need to add people on this, but CAUTION !! Please do not share the data. GDPR is the rules we abide to. 
+
+# Gitflow approach:
+
+Please open a new branch and name it intuitively. 
+I will then merge it into the master branch after run some tests. 
+
+I may also open tickets in the future in case more people join to help, with issues in need of improvement. 
 
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
 
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
