@@ -21,8 +21,8 @@ jobs:
           registry: ${{ secrets.ACR_ENDPOINT }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-        - name: Build and push
+      - name: Build and push
           uses: docker/build-push-action@v5
           with:
-            push: true
-            tags: ${{ secrets.ACR.ENDPOINT }}/${{ env.IMAGE_NAME}}
+          push: true
+          tags: ${{ secrets.ACR.ENDPOINT }}/${{ env.IMAGE_NAME}}
