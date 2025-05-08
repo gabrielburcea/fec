@@ -6,7 +6,7 @@ on:
       main
 
 env:
-  IMAGE_NAME: shiny-azure-app-service
+  IMAGE_NAME: fec
 
 jobs:
   build:
