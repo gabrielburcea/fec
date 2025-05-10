@@ -33,3 +33,10 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 RoxygenNote: 7.3.2
+
+=======
+VignetteBuilder: knitr
+URL: https://github.com/gabrielburcea/fec
+BugReports: https://github.com/gabrielburcea/fec/issues
+Depends: 
+
