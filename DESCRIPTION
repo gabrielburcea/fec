@@ -5,6 +5,7 @@ Authors@R:
     person("Gabriel", "Burcea", , "gb.burcea@gmail.com", role = c("cre", "aut"))
 Description: Free English Classes registration website.
 License: MIT + file LICENSE
+Remotes: gabrielburcea/fec
 URL: https://github.com/gabrielburcea/fec
 BugReports: https://github.com/gabrielburcea/fec/issues
 Depends: 
@@ -33,10 +34,3 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 RoxygenNote: 7.3.2
-
-=======
-VignetteBuilder: knitr
-URL: https://github.com/gabrielburcea/fec
-BugReports: https://github.com/gabrielburcea/fec/issues
-Depends: 
-
